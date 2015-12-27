@@ -1,6 +1,6 @@
 # vue-webpack-simple-boilerplate
 
-> A simple Webpack setup for `vue-loader`.
+> A simple Webpack setup for `vue-loader` for quick prototyping.
 
 ### Usage
 
