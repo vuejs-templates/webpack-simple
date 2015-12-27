@@ -16,7 +16,7 @@ $ npm run dev
 
 ### What's Included
 
-- `npm run dev`: Webpack + `vue-loader` with proper config for hot-reload & hot-reload.
+- `npm run dev`: Webpack + `vue-loader` with proper config for source maps & hot-reload.
 
 - `npm run build`: Production build with HTML/CSS/JS minification.
 
