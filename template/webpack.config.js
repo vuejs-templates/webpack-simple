@@ -8,11 +8,9 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
-
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),
   },
-
   module: {
     loaders: [
       {
