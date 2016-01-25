@@ -6,7 +6,7 @@
   "private": true,
   {{/private}}
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
+    "dev": "node dev.js",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
