@@ -23,18 +23,9 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
-        test: /\.html$/,
-        loader: 'vue-html'
-      },
-      {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'url',
+        loader: 'file',
         query: {
-          limit: 10000,
           name: '[name].[ext]?[hash]'
         }
       }
@@ -60,7 +51,6 @@ if (process.env.NODE_ENV === 'production') {
       compress: {
         warnings: false
       }
-    }),
-    new webpack.optimize.OccurenceOrderPlugin()
+    })
   ])
 }
