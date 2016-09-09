@@ -6,12 +6,13 @@
   "private": true,
   {{/private}}
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
+    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0 --port 9090",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "vue": "^1.0.0",
-    "babel-runtime": "^6.0.0"
+    "babel-runtime": "^6.0.0",
+    "@horizon/client": "^2.0.0-beta-7"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
