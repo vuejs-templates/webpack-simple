@@ -4,11 +4,11 @@
   "author": "{{ author }}",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
+    "dev": "webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.0.0-rc.8"
+    "vue": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
