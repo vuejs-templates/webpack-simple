@@ -8,14 +8,14 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
-  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue',
+        options: {
+          // vue-loader options go here
+        }
       },
       {
         test: /\.js$/,
@@ -25,7 +25,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file',
-        query: {
+        options: {
           name: '[name].[ext]?[hash]'
         }
       }
@@ -51,6 +51,9 @@ if (process.env.NODE_ENV === 'production') {
       compress: {
         warnings: false
       }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
     })
   ])
 }
