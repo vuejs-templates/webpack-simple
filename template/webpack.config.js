@@ -31,6 +31,11 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue'
+    }
+  },
   devServer: {
     historyApiFallback: true,
     noInfo: true
