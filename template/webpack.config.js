@@ -20,10 +20,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: [
-          path.resolve(__dirname, '../../vuetify/src/index'),
-          path.resolve(__dirname, '../src')
-        ]
+        exclude: /node_modules/
       },
       {
         test: /\.styl$/,

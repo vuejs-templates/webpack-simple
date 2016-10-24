@@ -14,7 +14,7 @@
     </header>
       <main>
         <h1>Vuetify</h1>
-        <h2>Essential Links</h2>
+        <h2>Important Links</h2>
         <div class="intro">
           <v-list>
             <v-list-item>
@@ -22,11 +22,31 @@
                 <a href="http://vuetifyjs.com">Vuetify Documentation</a>
               </v-list-item-title>
             </v-list-item>
+            <v-list-item>
+              <v-list-item-title>
+                <a href="#!">Vuetify SSR Webpack</a>
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>
+                <a href="#!">Vuetify Webpack</a>
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>
+                <a href="#!">Vuetify Webpack Simple</a>
+              </v-list-item-title>
+            </v-list-item>
           </v-list>
           <v-list>
             <v-list-item>
               <v-list-item-title>
-                <a href="http://vuejs.org">VueJS Documentation</a>
+                <a href="http://vuejs.org">Vue Documentation</a>
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>
+                <a href="http://vuejs.org">Vue Awesome</a>
               </v-list-item-title>
             </v-list-item>
           </v-list>

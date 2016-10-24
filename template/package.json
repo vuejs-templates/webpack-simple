@@ -4,7 +4,7 @@
   "author": "John Leider <john.j.leider@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --host=0.0.0.0 --port=8081 --open --inline --hot",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
