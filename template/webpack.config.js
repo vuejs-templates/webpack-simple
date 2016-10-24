@@ -20,14 +20,14 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        exclude: /node_modules/
+        include: [
+          path.resolve(__dirname, '../../vuetify/src/index'),
+          path.resolve(__dirname, '../src')
+        ]
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
+        test: /\.styl$/,
+        loader: ['style', 'css', 'stylus']
       }
     ]
   },
