@@ -27,11 +27,15 @@ module.exports = {
         loader: 'json'
       },
       {
+        test: /\.css$/,
+        loader: 'vue-style!css'
+      },
+      {
         test: /\.html$/,
         loader: 'vue-html'
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jp?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,
