@@ -1,0 +1,38 @@
+.intro {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+}
+
+a {
+  color: inherit;
+}
+
+.list {
+  margin: 0 2rem !important;
+}
+
+main {
+  text-align: center;
+}
+  
+.vuetify {
+  padding: 1.5rem 0;
+  margin: 4rem 0;
+  font-weight: 100;
+  font-size: 3.5rem;
+  letter-spacing: .3rem;
+  text-align: center;
+}
+
+h1:first-letter {
+  color: #2196F3;
+  font-weight: 900;
+  font-size: 5.5rem;
+  text-decoration: overline;
+  letter-spacing: 0px;
+}
+
+h2 {
+  text-align: center;
+}

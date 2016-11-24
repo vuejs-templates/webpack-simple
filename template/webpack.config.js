@@ -12,26 +12,24 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue',
+        loader: 'vue-loader',
         options: {
           // vue-loader options go here
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
+        loader: 'buble-loader',
+        exclude: /node_modules/,
+        options: {
+          objectAssign: 'Object.assign'
+        }
       },
       {
         test: /\.styl$/,
-        loader: ['style', 'css', 'stylus']
+        loader: ['style-loader', 'css-loader', 'stylus-loader']
       }
     ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue'
-    }
   },
   devServer: {
     historyApiFallback: true,

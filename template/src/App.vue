@@ -1,57 +1,58 @@
 <template>
-  <v-app navbar footer>
+  <v-app top-navbar>
     <header>
       <v-navbar>
-        <div class="navbar__logo">Welcome</div>
+        <div class="navbar__logo">Vuetify</div>
         <v-navbar-items>
-          <v-navbar-item
-            class="navbar__item--active"
-            v-bind:item="item"
-          >
-          </v-navbar-item>
+          <v-navbar-item :item="item"></v-navbar-item>
         </v-navbar-items>
       </v-navbar>
     </header>
-      <main>
-        <h1>Vuetify</h1>
-        <h2>Important Links</h2>
-        <div class="intro">
-          <v-list>
-            <v-list-item>
-              <v-list-item-title>
-                <a href="http://vuetifyjs.com">Vuetify Documentation</a>
-              </v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title>
-                <a href="#!">Vuetify SSR Webpack</a>
-              </v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title>
-                <a href="#!">Vuetify Webpack</a>
-              </v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title>
-                <a href="#!">Vuetify Webpack Simple</a>
-              </v-list-item-title>
-            </v-list-item>
-          </v-list>
-          <v-list>
-            <v-list-item>
-              <v-list-item-title>
-                <a href="http://vuejs.org">Vue Documentation</a>
-              </v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title>
-                <a href="http://vuejs.org">Vue Awesome</a>
-              </v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </div>
-      </main>
+    <main>
+      <v-content>
+        <v-container :fluid="true">
+          <h1 class="vuetify">Vuetify</h1>
+          <p>Welcome to the Vuetify Webpack-Simple Template</p>
+          <h2>Important Links</h2>
+          <div class="intro">
+            <v-list>
+              <v-list-item>
+                <v-list-item-title>
+                  <a href="http://vuetifyjs.com" target="_blank">Vuetify Documentation</a>
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>
+                  <a href="https://github.com/vuetifyjs/webpack-ssr" target="_blank">Vuetify SSR Webpack</a>
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>
+                  <a href="https://github.com/vuetifyjs/webpack" target="_blank">Vuetify Webpack</a>
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+            <v-list>
+              <v-list-item>
+                <v-list-item-title>
+                  <a href="https://github.com/vuetifyjs/webpack-simple" target="_blank">Vuetify Webpack Simple</a>
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>
+                  <a href="http://vuejs.org" target="_blank">Vue Documentation</a>
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>
+                  <a href="https://github.com/vuejs/awesome-vue" target="_blank">Vue Awesome</a>
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </div>
+        </v-container>
+      </v-content>
+    </main>
   </v-app>
 </template>
 
@@ -73,5 +74,6 @@
 </script>
 
 <style lang="stylus">
-  @import './stylus/main'
+  @import '../node_modules/vuetify/src/stylus/main'
+  @import './css/main.css'
 </style>
