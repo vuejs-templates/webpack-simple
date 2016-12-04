@@ -11,8 +11,12 @@
     <main>
       <v-content>
         <v-container :fluid="true">
-          <h1 class="vuetify">Vuetify</h1>
-          <p>Welcome to the Vuetify Webpack-Simple Template</p>
+          <v-card class="secondary" height="200px">
+            <v-card-text>
+              <img src="public/v.png">
+            </v-card-text>
+          </v-card>
+          <p>Welcome to the Vuetify Webpack Template</p>
           <h2>Important Links</h2>
           <div class="intro">
             <v-list>

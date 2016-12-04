@@ -8,6 +8,11 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  resolve: {
+    alias: {
+      'public': path.resolve(__dirname, './public')
+    }
+  },
   module: {
     rules: [
       {
