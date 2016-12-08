@@ -2,7 +2,7 @@
   <v-app top-navbar>
     <header>
       <v-navbar>
-        <div class="navbar__logo">Vuetify</div>
+        <v-navbar-logo>Vuetify</v-navbar-logo>
         <v-navbar-items>
           <v-navbar-item :item="item"></v-navbar-item>
         </v-navbar-items>
@@ -10,8 +10,8 @@
     </header>
     <main>
       <v-content>
-        <v-container :fluid="true">
-          <v-card class="secondary" height="200px">
+        <v-container fluid>
+          <v-card class="secondary">
             <v-card-text>
               <img src="public/v.png">
             </v-card-text>
