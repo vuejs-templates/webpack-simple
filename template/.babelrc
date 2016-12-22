@@ -1,5 +1,10 @@
 {
   "presets": [
-    ["es2015", { "modules": false }]
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      },
+      "modules": false
+    }]
   ]
 }
