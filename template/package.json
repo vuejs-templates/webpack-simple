@@ -4,11 +4,11 @@
   "author": "John Leider <john.j.leider@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot --host=0.0.0.0 --port=8081",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot --host=0.0.0.0 --port=8080",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.1.6"
+    "vue": "2.1.6"
   },
   "devDependencies": {
     "buble": "^0.15.1",
@@ -20,8 +20,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.1.1",
     "vue-loader": "^10.0.2",
-    "vue-template-compiler": "^2.1.6",
-    "vuetify": "0.7.*",
+    "vue-template-compiler": "2.1.6",
+    "vuetify": "^0.7.*",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^2.1.0-beta.0"
   }
