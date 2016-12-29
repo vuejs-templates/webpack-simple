@@ -40,7 +40,8 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  performance: false
 }
 
 if (process.env.NODE_ENV === 'production') {
