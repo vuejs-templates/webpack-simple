@@ -1,26 +1,28 @@
-.intro {
+/** CSS Styles */
+
+#getting-started .intro {
   display: flex;
   justify-content: center;
   margin: 4rem 0;
 }
 
-.card {
-  margin-top: -1rem;
+#getting-started .card {
+  border-radius: 0;
   margin-bottom: 5rem;
 }
 
-a {
+#getting-started a {
   color: inherit;
 }
 
-.list {
+#getting-started .list {
   margin: 0 2rem !important;
 }
 
-main {
+#getting-started main {
   text-align: center;
 }
 
-h2 {
+#getting-started h2 {
   text-align: center;
 }
