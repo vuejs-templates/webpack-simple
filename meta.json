@@ -14,6 +14,11 @@
     "author": {
       "type": "string",
       "label": "Author"
+    },
+    "sass": {
+       "type": "confirm",
+       "message": "Use sass?",
+       "default": false
     }
   },
   "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev"
