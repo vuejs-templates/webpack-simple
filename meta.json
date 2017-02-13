@@ -13,12 +13,13 @@
     },
     "author": {
       "type": "string",
-      "label": "Author"
+      "label": "Author",
+      "default": "Andy Merskin <andymerskin@gmail.com>"
     },
     "sass": {
        "type": "confirm",
        "message": "Use sass?",
-       "default": false
+       "default": true
     }
   },
   "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev"
