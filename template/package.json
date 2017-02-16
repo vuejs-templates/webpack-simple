@@ -25,7 +25,7 @@
     "stylus-loader": "^2.4.0",
     "vue-loader": "^10.3.0",
     "vue-template-compiler": "^2.1.10",
-    "vuetify": "^0.8.8",
+    "vuetify": "^0.8.9",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.2.0-rc.0"
   }
