@@ -1,5 +1,5 @@
 <template>
-  <v-app top-navbar>
+  <v-app top-toolbar>
     <header>
       <v-toolbar>
         <v-toolbar-logo>Vuetify</v-toolbar-logo>
