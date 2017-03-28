@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.2.0",
+    "vue": "^2.2.6",
     "vue-router": "^2.2.0",
     "vue-server-renderer": "^2.1.10",
     "vuex": "^2.1.2",
@@ -24,8 +24,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.4.0",
     "vue-loader": "^10.3.0",
-    "vue-template-compiler": "^2.1.10",
-    "vuetify": "^0.9.1",
+    "vue-template-compiler": "^2.2.6",
+    "vuetify": "^0.9.4",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.2.0-rc.0"
   }
