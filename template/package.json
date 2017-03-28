@@ -23,7 +23,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.4.0",
-    "vue-loader": "^10.3.0",
+    "vue-loader": "^11.3.3",
     "vue-template-compiler": "^2.2.6",
     "vuetify": "^0.9.4",
     "webpack": "^2.2.1",
