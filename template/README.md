@@ -1,4 +1,4 @@
-# {{ name }}
+# webpack-simple
 
 > {{ description }}
 
