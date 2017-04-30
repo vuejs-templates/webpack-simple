@@ -40,11 +40,6 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
   devServer: {
     historyApiFallback: true,
     noInfo: true
@@ -57,11 +52,6 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
-  module.exports.resolve = {
-    alias: {
-      'vue$': 'vue/dist/vue.runtime.esm.js'
-    }
-  }
 
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
