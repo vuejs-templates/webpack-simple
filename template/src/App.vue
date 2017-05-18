@@ -1,78 +1,85 @@
 <template>
-  <v-app top-toolbar>
-    <header>
-      <v-toolbar>
-        <v-toolbar-logo>Vuetify</v-toolbar-logo>
-        <v-toolbar-items>
-          <v-toolbar-item>
-            {{ item.text }}
-          </v-toolbar-item>
-        </v-toolbar-items>
-      </v-toolbar>
-    </header>
+  <v-app>
+    <v-navigation-drawer
+      persistent
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      v-model="drawer"
+    >
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+        >
+          <v-list-tile 
+            router
+            :to="item.to"
+          >
+            <v-list-tile-action>
+              <v-icon light v-html="item.icon"></v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title v-text="item.title"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar>
+      <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn 
+        icon
+        @click.native.stop="miniVariant = !miniVariant"
+      >
+        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.native.stop="clipped = !clipped"
+      >
+        <v-icon>web</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click.native.stop="fixed = !fixed"
+      >
+        <v-icon>remove</v-icon>
+      </v-btn>
+      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        icon
+        @click.native.stop="rightDrawer = !rightDrawer"
+      >
+        <v-icon>menu</v-icon>
+      </v-btn>
+    </v-toolbar>
     <main>
-      <v-content>
-        <v-container fluid>
-          <div id="getting-started">
-            <v-card class="secondary">
-              <v-card-text class="text-xs-center">
-                <img src="public/v.png">
-              </v-card-text>
-            </v-card>
-            <p class="text-xs-center">Welcome to the Vuetify Webpack Template</p>
-            <h2 class="primary--text">Important Links</h2>
-            <div class="intro">
-              <v-list>
-                <v-list-item>
-                  <v-list-tile href="http://vuetifyjs.com" target="_blank">
-                    <v-list-tile-title>
-                      Vuetify Documentation
-                    </v-list-tile-title>
-                  </v-list-tile>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-tile href="https://github.com/vuetifyjs/webpack-ssr" target="_blank">
-                    <v-list-tile-title>
-                      Vuetify SSR Webpack
-                    </v-list-tile-title>
-                  </v-list-tile>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-tile href="https://github.com/vuetifyjs/webpack" target="_blank">
-                    <v-list-tile-title>
-                      Vuetify Webpack
-                    </v-list-tile-title>
-                  </v-list-tile>
-                </v-list-item>
-              </v-list>
-              <v-list>
-                <v-list-item>
-                  <v-list-tile href="https://github.com/vuetifyjs/webpack-simple" target="_blank">
-                    <v-list-tile-title>
-                      Vuetify Webpack Simple
-                    </v-list-tile-title>
-                  </v-list-tile>
-                </v-list-item>
-                <v-list-item>
-                  <v-list-tile href="http://vuejs.org" target="_blank">
-                    <v-list-tile-title>
-                      Vue Documentation
-                    </v-list-tile-title>
-                  </v-list-tile>
-                </v-list-item>
-                <v-list-item>
-                    <v-list-tile href="https://github.com/vuejs/awesome-vue" target="_blank">
-                      <v-list-tile-title>
-                        Vue Awesome
-                      </v-list-tile-title>
-                    </v-list-tile>
-                </v-list-item>
-              </v-list>
-            </div>
-          </div>
-        </v-container>
-      </v-content>
+      <v-container fluid>
+        <v-slide-y-transition mode="out-in">
+          <router-view></router-view>
+        </v-slide-y-transition>
+      </v-container>
     </main>
+    <v-navigation-drawer
+      temporary
+      :right="right"
+      v-model="rightDrawer"
+    >
+      <v-list>
+        <v-list-item>
+          <v-list-tile @click.native="right = !right">
+            <v-list-tile-action>
+              <v-icon light>compare_arrows</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
+          </v-list-tile>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-footer :fixed="fixed">
+      <span>&copy; 2017</span>
+    </v-footer>
   </v-app>
 </template>
 
@@ -80,15 +87,22 @@
   export default {
     data () {
       return {
-        item: {
-          text: 'Get Started'
-        }
+        clipped: false,
+        drawer: true,
+        fixed: false,
+        items: [
+          { icon: 'apps', title: 'Welcome', to: '/' },
+          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+        ],
+        miniVariant: false,
+        right: true,
+        rightDrawer: false,
+        title: 'Vuetify.js'
       }
     }
   }
 </script>
 
 <style lang="stylus">
-  @import '../node_modules/vuetify/src/stylus/main'
-  @import './css/main.css'
+  @import './stylus/main'
 </style>
