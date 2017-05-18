@@ -11,10 +11,7 @@
           v-for="(item, i) in items"
           :key="i"
         >
-          <v-list-tile 
-            router
-            :to="item.to"
-          >
+          <v-list-tile value="true">
             <v-list-tile-action>
               <v-icon light v-html="item.icon"></v-icon>
             </v-list-tile-action>
@@ -57,7 +54,17 @@
     <main>
       <v-container fluid>
         <v-slide-y-transition mode="out-in">
-          <router-view></router-view>
+          <v-layout column align-center>
+            <img src="/public/v.png" alt="Vuetify.js" class="mb-5" />
+            <blockquote>
+              &#8220;First, solve the problem. Then, write the code.&#8221;
+              <footer>
+                <small>
+                  <em>&mdash;John Johnson</em>
+                </small>
+              </footer>
+            </blockquote>
+          </v-layout>
         </v-slide-y-transition>
       </v-container>
     </main>
@@ -91,8 +98,7 @@
         drawer: true,
         fixed: false,
         items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+          { icon: 'bubble_chart', title: 'Inspire' }
         ],
         miniVariant: false,
         right: true,
