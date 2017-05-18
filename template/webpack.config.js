@@ -19,13 +19,26 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          // vue-loader options go here
+          loaders: {
+            {{#sass}}
+            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
+            // the "scss" and "sass" values for the lang attribute to the right configs here.
+            // other preprocessors should work out of the box, no loader config like this necessary.
+            'scss': 'vue-style-loader!css-loader!sass-loader',
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+            {{/sass}}
+          }
+          // other vue-loader options go here
         }
       },
       {
         test: /\.js$/,
-        loader: 'buble-loader',
-        exclude: /node_modules/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
         options: {
           objectAssign: 'Object.assign'
         }
@@ -36,12 +49,19 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
+  },
   devServer: {
     historyApiFallback: true,
     noInfo: true
   },
-  devtool: '#eval-source-map',
-  performance: false
+  performance: {
+    hints: false
+  },
+  devtool: '#eval-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -54,6 +74,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         warnings: false
       }
