@@ -9,7 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.2.1"
+    "vue": "^2.3.3"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -22,9 +22,9 @@
     "node-sass": "^4.5.0",
     "sass-loader": "^5.0.1",
     {{/sass}}
-    "vue-loader": "^11.1.4",
-    "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
