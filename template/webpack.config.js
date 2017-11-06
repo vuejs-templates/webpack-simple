@@ -43,7 +43,7 @@ module.exports = {
       {{/sass}}
       {
         test: /\.vue$/,
-        use: 'vue-loader',
+        loader: 'vue-loader',
         options: {
           loaders: {
             {{#sass}}
@@ -67,12 +67,12 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: 'babel-loader',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        use: 'file-loader',
+        loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
