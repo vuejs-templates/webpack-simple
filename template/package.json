@@ -3,6 +3,7 @@
   "description": "{{ description }}",
   "version": "1.0.0",
   "author": "{{ author }}",
+  "license": "{{ license }}",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",

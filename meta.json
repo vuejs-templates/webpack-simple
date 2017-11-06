@@ -15,6 +15,11 @@
       "type": "string",
       "label": "Author"
     },
+    "license": {
+      "type": "string",
+      "label": "License",
+      "default": "MIT"
+    },
     "sass": {
        "type": "confirm",
        "message": "Use sass?",
