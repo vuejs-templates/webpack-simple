@@ -56,7 +56,7 @@ module.exports = {
               'sass-loader'
             ],
             'sass': [
-              'vue-style-loader'
+              'vue-style-loader',
               'css-loader',
               'sass-loader?indentedSyntax'
             ]
