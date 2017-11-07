@@ -30,7 +30,7 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader?indentedSytanx'
+          'sass-loader?indentedSyntax'
         ],
       },
       {{/sass}}
