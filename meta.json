@@ -25,7 +25,7 @@
        "message": "Use sass?",
        "default": false
     },
-    "django_path_to_manage.py": {
+    "django_path_to_manage": {
       "type": "string",
       "label": "Where is django?",
       "default": "../../manage.py"
