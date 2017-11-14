@@ -6,9 +6,8 @@
   "license": "{{ license }}",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "start": "webpack-dev-server --config start_dev.js --progress --colors"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --colors",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "vue": "^2.4.4"

@@ -1,5 +1,7 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
+
+require("./backend.js");
 
 module.exports = {
   entry: './src/main.js',
@@ -81,7 +83,14 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+
+    proxy: {
+      "/api/*": {
+        target: "http://localhost:3000",
+        secure: false           
+      }
+    }
   },
   performance: {
     hints: false

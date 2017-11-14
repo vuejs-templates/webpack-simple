@@ -28,7 +28,7 @@
     "django_path_to_manage": {
       "type": "string",
       "label": "Where is django?",
-      "default": "../../manage.py"
+      "default": "../manage.py"
     }
   },
   "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev{{else}}To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev{{/inPlace}}"
