@@ -8,6 +8,16 @@
 
 This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
+#### yarn 
+``` bash
+$ yarn global add vue-cli
+$ yarn vue init webpack-simple my-project
+$ cd my-project
+$ yarn install
+$ yarn run dev
+```
+
+#### npm
 ``` bash
 $ npm install -g vue-cli
 $ vue init webpack-simple my-project
@@ -18,8 +28,12 @@ $ npm run dev
 
 ### What's Included
 
-- `npm run dev`: Webpack + `vue-loader` with proper config for source maps & hot-reload.
+#### yarn
+- `yarn run dev`: Webpack + `vue-loader` with proper config for source maps & hot-reload.
+- `yarn run build`: build with HTML/CSS/JS minification.
 
+#### npm
+- `npm run dev`: Webpack + `vue-loader` with proper config for source maps & hot-reload.
 - `npm run build`: build with HTML/CSS/JS minification.
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader). Also check out the [breaking changes in vue-loader@9.0.0](https://github.com/vuejs/vue-loader/releases/tag/v9.0.0).
