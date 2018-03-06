@@ -21,9 +21,9 @@
       "default": "MIT"
     },
     "sass": {
-       "type": "confirm",
-       "message": "Use sass?",
-       "default": false
+      "type": "confirm",
+      "message": "Use sass?",
+      "default": false
     }
   },
   "completeMessage": "{{#inPlace}}To get started:\n\n  npm install\n  npm run dev{{else}}To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev{{/inPlace}}"
