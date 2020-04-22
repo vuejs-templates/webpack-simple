@@ -9,11 +9,18 @@
 This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ``` bash
-$ npm install -g vue-cli
-$ vue init webpack-simple my-project
-$ cd my-project
-$ npm install
-$ npm run dev
+npm install -g @vue/cli
+npm install -g @vue/cli-init
+vue init webpack-simple my-project
+cd my-project
+npm install
+#resolve manually the issues using npm audit
+npm i --save-dev webpack-cli
+npm remove npm remove webpack-dev-server
+npm i --save-dev npm remove webpack-dev-server
+npm remove vue-loader
+npm i --save-dev vue-loader@^14.2.2
+npm run dev #==> **The website launches fine **
 ```
 
 ### What's Included
