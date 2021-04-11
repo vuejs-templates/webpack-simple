@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <input type="text" v-model="pickMonth" />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: 'Main',
   data () {
     return {
-      pickMonth: null
+      Id:"App"
     }
   }
 }
 </script>
+
+<style lang="sass">
+  @import '../node_modules/bulma/bulma.sass'
+</style>
