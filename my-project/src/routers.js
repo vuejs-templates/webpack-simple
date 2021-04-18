@@ -1,7 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Cpd from "./views/cpd.vue"
+import Mensal from "./views/Mensal.vue";
+import Interjornada from "./views/Interjornada.vue";
+import Organico from "./views/organico.vue";
+import Home from "./views/Home-orig.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -9,13 +11,24 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      name: "Home",
+      path: "/:setor",
+      name: "mensal",
+      component: Mensal
+    },
+    {
+      path: "/mensal",
+      name: "home",
       component: Home
-    },{
-      path: "/cpd",
-      name: "cpd",
-      component: Cpd
+    },
+    {
+      path: "/interjornada",
+      name: "interjornada",
+      component: Interjornada
+    },
+    {
+      path: "/organico/:setor",
+      name: "organico",
+      component: Organico
     }
   ]
 });

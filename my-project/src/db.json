@@ -1,0 +1,15 @@
+{
+  "setores": {
+    "hortifruti": null,
+    "cpd": {
+      "organico": {
+        "mat": 54559,
+        "nome": "luiz eduardo de souza lopes",
+        "weeks": [
+          { "horario": "07:00", "folga": "20-04-21" },
+          { "horario": "07:00", "folga": "20-04-21" }
+        ]
+      }
+    }
+  }
+}

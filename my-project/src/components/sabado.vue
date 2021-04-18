@@ -1,4 +1,4 @@
-<!-- doming.vue -->
+<!-- sabado.vue -->
 <template>
 	<p>{{display}}</p>
 </template>
@@ -7,11 +7,11 @@ import moment from 'moment'
 import 'moment/locale/pt-br'
 moment.locale('pt-br')
 	export default {
-	name: 'domingo',
+	name: 'sabado',
 	props: ['addWeeks'],
 	computed: {
 		display: function () {
-			return moment(this.iniDate).add(this.addWeeks, 'week').format('L')
+			return moment(this.iniDate).add(this.addWeeks, 'week').subtract(1,'days').format('L')
 		},
 		iniDate: function () {
 			var initDate = moment(this.$parent.validateDate).startOf('month').toObject();
@@ -21,10 +21,6 @@ moment.locale('pt-br')
 				return moment(initDate).startOf('week').add(1, 'week').toObject()
 			}
 		},
-		W: function()
-		{
-			return Number(moment(this.display,"DD/MM/YYYY").format('w'))
-		}
 	}
 }
 </script>
