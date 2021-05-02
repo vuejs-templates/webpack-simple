@@ -25,15 +25,15 @@
         <td class="mat-ret">Matricula</td>
         <td>Colaborador</td>
         <td class="mat-ret">Retorno</td>
-        <td><domingo add-weeks="0" ref="do"></domingo></td>
+        <td><domingo add-weeks="0" ref="d0"></domingo></td>
         <td>folga</td>
-        <td><domingo add-weeks="1" ref="d2"></domingo></td>
+        <td><domingo add-weeks="1" ref="d1"></domingo></td>
         <td>folga</td>
-        <td><domingo add-weeks="2" ref="d3"></domingo></td>
+        <td><domingo add-weeks="2" ref="d2"></domingo></td>
         <td>folga</td>
-        <td><domingo add-weeks="3" ref="d4"></domingo></td>
+        <td><domingo add-weeks="3" ref="d3"></domingo></td>
         <td>folga</td>
-        <td v-show="condFivDom"><domingo add-weeks="4" ref="d5"></domingo></td>
+        <td v-show="condFivDom"><domingo add-weeks="4" ref="d4"></domingo></td>
         <td v-if="condFivDom">folga</td>
       </tr>
       <tr v-for="colab in banco" :class="{ 'is-selected': colab.edit }">
@@ -51,31 +51,31 @@
         <td class="has-text-centered hora">
           <time-entrance
             v-model="d0_hora"
-            @input="updateHora(colab['.key'], 0)"
+            @input="updateHora0(colab['.key'], $refs.d0.W)"
             v-if="colab.edit"
             :setor="setor"
-            :get-value="colab.domingos[$refs.do.W].hora"
+            :get-value="colab.domingos[$refs.d0.W].hora"
           ></time-entrance>
-          <span v-else>{{ colab.domingos[$refs.do.W].hora }}</span>
+          <span v-else>{{ colab.domingos[$refs.d0.W].hora }}</span>
         </td>
         <td class="dia has-text-centered">
           <folga
             v-model="d0_folga"
             @input="updateDia(colab['.key'], 0)"
             v-if="colab.edit"
-            :get-value="colab.domingos[$refs.do.W].dia"
+            :get-value="colab.domingos[0].dia"
           ></folga><!--seletor de Array modificado-->
-          <span v-else>{{ colab.domingos[$refs.do.W].dia | moment("ddd, DD/MMM") }}</span>
+          <span v-else>{{ colab.domingos[0].dia | moment("ddd, DD/MMM") }}</span>
         </td>
         <td class="has-text-centered hora">
           <time-entrance
             v-model="d1_hora"
-            @input="updateHora(colab['.key'], 1)"
+            @input="updateHora1(colab['.key'], $refs.d1.W)"
             v-if="colab.edit"
             :setor="setor"
-            :get-value="colab.domingos[1].hora"
+            :get-value="colab.domingos[$refs.d1.W].hora"
           ></time-entrance>
-          <span v-else>{{ colab.domingos[1].hora }}</span>
+          <span v-else>{{ colab.domingos[$refs.d1.W].hora }}</span>
         </td>
         <td class="dia has-text-centered">
           <folga
@@ -89,12 +89,12 @@
         <td class="has-text-centered hora">
           <time-entrance
             v-model="d2_hora"
-            @input="updateHora(colab['.key'], 2)"
+            @input="updateHora2(colab['.key'], $refs.d2.W)"
             v-if="colab.edit"
             :setor="setor"
-            :get-value="colab.domingos[2].hora"
+            :get-value="colab.domingos[$refs.d2.W].hora"
           ></time-entrance>
-          <span v-else>{{ colab.domingos[2].hora }}</span>
+          <span v-else>{{ colab.domingos[$refs.d2.W].hora }}</span>
         </td>
         <td class="dia has-text-centered">
           <folga
@@ -108,12 +108,12 @@
         <td class="has-text-centered hora">
           <time-entrance
             v-model="d3_hora"
-            @input="updateHora(colab['.key'], 3)"
+            @input="updateHora3(colab['.key'], $refs.d3.W)"
             v-if="colab.edit"
             :setor="setor"
-            :get-value="colab.domingos[3].hora"
+            :get-value="colab.domingos[$refs.d3.W].hora"
           ></time-entrance>
-          <span v-else>{{ colab.domingos[3].hora }}</span>
+          <span v-else>{{ colab.domingos[$refs.d3.W].hora }}</span>
         </td>
         <td class="dia has-text-centered">
           <folga
@@ -127,12 +127,12 @@
         <td class="has-text-centered hora" v-if="condFivDom">
           <time-entrance
             v-model="d4_hora"
-            @input="updateHora(colab['.key'], 4)"
+            @input="updateHora4(colab['.key'], $refs.d4.W)"
             v-if="colab.edit"
             :setor="setor"
-            :get-value="colab.domingos[4].hora"
+            :get-value="colab.domingos[$refs.d4.W].hora"
           ></time-entrance>
-          <span v-else>{{ colab.domingos[4].hora }}</span>
+          <span v-else>{{ colab.domingos[$refs.d4.W].hora }}</span>
         </td>
         <td v-if="condFivDom" class="dia has-text-centered">
           <folga
@@ -198,25 +198,28 @@ export default {
       return console.log("changed");
     },
     // funçoes de update hora
-    updateHora(k, i) {
-      var vm = this;
-      var obj;
-      switch (i) {
-        case 0:
-          obj = { hora: vm.d0_hora };
-          break;
-        case 1:
-          obj = { hora: vm.d1_hora };
-          break;
-        case 2:
-          obj = { hora: vm.d2_hora };
-          break;
-        case 3:
-          obj = { hora: vm.d3_hora };
-          break;
-        case 4:
-          obj = { hora: vm.d4_hora };
-      }
+    updateHora0(k, i) {
+      var obj = {hora: this.d0_hora}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateHora1(k, i) {
+      var obj = {hora: this.d1_hora}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateHora2(k, i) {
+      var obj = {hora: this.d2_hora}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateHora3(k, i) {
+      var obj = {hora: this.d3_hora}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateHora4(k, i) {
+      var obj = {hora: this.d4_hora}
       var url = k + "/domingos/" + i;
       return this.$firebaseRefs.banco.child(url).update(obj);
     },
@@ -248,16 +251,6 @@ export default {
         var url = this.$route.params.setor + '/organico'
       return url.toLowerCase();
     },
-    noEmpty(){
-    /*
-    função usada para carregar o organico inicia, caso o mÊs esteja Vazio,
-    */
-    if (this.banco.length == 0) {
-      return this.idy = "organico/" + this.$route.query.setor;
-    } else {
-      return this.idy = this.id;
-    }
-  },
    setor() {
       return this.$route.params.setor;
     },

@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
 import flatpickr from "flatpickr";
 import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 export default {
@@ -21,8 +22,12 @@ export default {
     flatpickr(document.getElementsByClassName("flatpickr"), {
          wrap: true,
       dateFormat: "D,d/m",
+
       locale: Portuguese
     });
+  },
+  computed: {
+    maxDate: moment(this.getValue).format('L')
   },
 };
 </script>

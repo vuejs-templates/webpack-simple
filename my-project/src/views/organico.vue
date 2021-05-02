@@ -70,28 +70,28 @@ export default {
       //id: this.$route.query.setor
     };
   },
-  mounted() {
-    /*
-    função usada para carregar o organico inicia, caso o mÊs esteja Vazio, 
-    */
-    if (Boolean(this.$route.query.setor) == false) {
-      return (this.id = "cpd");
-    } else {
-      this.id = this.$route.query.setor;
-    }
-  },
+  // mounted() {
+  //   /*
+  //   função usada para carregar o organico inicia, caso o mÊs esteja Vazio,
+  //   */
+  //   if (Boolean(this.$route.query.setor) == false) {
+  //     return (this.id = "cpd");
+  //   } else {
+  //     this.id = this.$route.query.setor;
+  //   }
+  // },
   computed: {
     id() {
-        return this.$route.params.setor
+        return this.$route.params.setor + '/organico'
      /* if (this.setor == null) {
         return (this.modalActive = true);
       }*/
     },
-    week:function(){
+   week:function(){
         var weeks = []
               var i = weeks.length
             while (i < 52){
-                  weeks.push({ dia: moment({y:2021}).add(i++,"week").format(), hora: Date.now() })
+                  weeks.push({ dia: moment({y:2021,M:0}).add(i++,"weeks").format('L'), hora: moment().format("HH:mm:ss") })
               }
               return weeks
     }

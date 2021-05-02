@@ -1,5 +1,4 @@
 import Vue from 'vue'
-// import VueFlatPickr from 'vue-flatpickr-component'
 import App from './App.vue'
 import router from './routers.js'
 // Vuefire
