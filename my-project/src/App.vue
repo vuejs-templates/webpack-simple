@@ -225,19 +225,6 @@ export default {
     },
     addHorario() {
       return db.ref("horarios/" + this.$route.query.setor).set(this.horaSetor);
-    },
-    addColab(url) {
-      this.modalActive = false;
-      const obj = { dia: "", hora: "" };
-      return db
-        .ref(url + "/" + this.$route.query.setor + "/" + this.$route.query.mes)
-        .push({
-          mat: this.mat,
-          nome: this.nome,
-          edit: false,
-          domingos: [obj, obj, obj, obj, obj]
-        });
-      //.then(this.clearAdd());
     }
   },
   components: {

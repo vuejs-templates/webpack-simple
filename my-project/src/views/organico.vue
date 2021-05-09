@@ -91,7 +91,7 @@ export default {
         var weeks = []
               var i = weeks.length
             while (i < 52){
-                  weeks.push({ dia: moment({y:2021,M:0}).add(i++,"weeks").format('L'), hora: moment().format("HH:mm:ss") })
+                  weeks.push({ dia: moment().startOf('year').add(i++,"weeks").format('L'), hora: moment().get("second") })
               }
               return weeks
     }

@@ -1,7 +1,9 @@
 <!--folga.vue-->
 <template>
   <div class="flatpickr">
-    <input
+<div class="field has-addons">
+  <p class="control">
+     <input
       type="text"
       v-bind:value="value"
       :placeholder="getValue"
@@ -9,6 +11,13 @@
       @input="$emit('input', $event.target.value)"
       data-input
     />
+  </p>
+  <p class="control">
+    <button class="button is-small" data-clear>
+        [X]
+    </button>
+  </p>
+</div>
   </div>
 </template>
 <script>
@@ -26,9 +35,9 @@ export default {
       locale: Portuguese
     });
   },
-  computed: {
+  /*computed: {
     maxDate: moment(this.getValue).format('L')
-  },
+  },*/
 };
 </script>
 <style>

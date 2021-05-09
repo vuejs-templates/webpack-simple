@@ -53,7 +53,7 @@
             v-model="d0_hora"
             @input="updateHora0(colab['.key'], $refs.d0.W)"
             v-if="colab.edit"
-            :setor="setor"
+
             :get-value="colab.domingos[$refs.d0.W].hora"
           ></time-entrance>
           <span v-else>{{ colab.domingos[$refs.d0.W].hora }}</span>
@@ -61,11 +61,11 @@
         <td class="dia has-text-centered">
           <folga
             v-model="d0_folga"
-            @input="updateDia(colab['.key'], 0)"
+            @input="updateDia0(colab['.key'], $refs.d0.W)"
             v-if="colab.edit"
-            :get-value="colab.domingos[0].dia"
+            :get-value="colab.domingos[$refs.d0.W].dia"
           ></folga><!--seletor de Array modificado-->
-          <span v-else>{{ colab.domingos[0].dia | moment("ddd, DD/MMM") }}</span>
+          <span v-else>{{ colab.domingos[$refs.d0.W].dia }}</span>
         </td>
         <td class="has-text-centered hora">
           <time-entrance
@@ -80,11 +80,11 @@
         <td class="dia has-text-centered">
           <folga
             v-model="d1_folga"
-            @input="updateDia(colab['.key'], 1)"
+            @input="updateDia1(colab['.key'], $refs.d1.W)"
             v-if="colab.edit"
-            :get-value="colab.domingos[1].dia"
+            :get-value="colab.domingos[$refs.d1.W].dia"
           ></folga>
-          <span v-else>{{ colab.domingos[1].dia }}</span>
+          <span v-else>{{ colab.domingos[$refs.d1.W].dia }}</span>
         </td>
         <td class="has-text-centered hora">
           <time-entrance
@@ -99,11 +99,11 @@
         <td class="dia has-text-centered">
           <folga
             v-model="d2_folga"
-            @input="updateDia(colab['.key'], 2)"
+            @input="updateDia2(colab['.key'], $refs.d2.W)"
             v-if="colab.edit"
-            :get-value="colab.domingos[2].dia"
+            :get-value="colab.domingos[$refs.d2.W].dia"
           ></folga>
-          <span v-else>{{ colab.domingos[2].dia }}</span>
+          <span v-else>{{ colab.domingos[$refs.d2.W].dia }}</span>
         </td>
         <td class="has-text-centered hora">
           <time-entrance
@@ -118,11 +118,11 @@
         <td class="dia has-text-centered">
           <folga
             v-model="d3_folga"
-            @input="updateDia(colab['.key'], 3)"
+            @input="updateDia3(colab['.key'], $refs.d3.W)"
             v-if="colab.edit"
-            :get-value="colab.domingos[3].dia"
+            :get-value="colab.domingos[$refs.d3.W].dia"
           ></folga>
-          <span v-else>{{ colab.domingos[3].dia }}</span>
+          <span v-else>{{ colab.domingos[$refs.d3.W].dia }}</span>
         </td>
         <td class="has-text-centered hora" v-if="condFivDom">
           <time-entrance
@@ -137,11 +137,11 @@
         <td v-if="condFivDom" class="dia has-text-centered">
           <folga
             v-model="d4_folga"
-            @input="updateDia(colab['.key'], 4)"
+            @input="updateDia4(colab['.key'], $refs.d4.W)"
             v-if="colab.edit"
-            :get-value="colab.domingos[4].dia"
+            :get-value="colab.domingos[$refs.d4.W].dia"
           ></folga>
-          <span v-else>{{ colab.domingos[4].dia }}</span>
+          <span v-else>{{ colab.domingos[$refs.d4.W].dia }}</span>
         </td>
       </tr>
     </table>
@@ -223,28 +223,31 @@ export default {
       var url = k + "/domingos/" + i;
       return this.$firebaseRefs.banco.child(url).update(obj);
     },
-    updateDia(k, i) {
-      var vm = this;
-      var obj;
-      switch (i) {
-        case 0:
-          obj = { dia: vm.d0_folga };
-          break;
-        case 1:
-          obj = { dia: vm.d1_folga };
-          break;
-        case 2:
-          obj = { dia: vm.d2_folga };
-          break;
-        case 3:
-          obj = { dia: vm.d3_folga };
-          break;
-        case 4:
-          obj = { dia: vm.d4_folga };
-      }
+    updateDia0(k, i) {
+      var obj = {dia: this.d0_folga}
       var url = k + "/domingos/" + i;
       return this.$firebaseRefs.banco.child(url).update(obj);
-    }
+    },
+    updateDia1(k, i) {
+      var obj = {dia: this.d1_folga}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateDia2(k, i) {
+      var obj = {dia: this.d2_folga}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateDia3(k, i) {
+      var obj = {dia: this.d3_folga}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
+    updateDia4(k, i) {
+      var obj = {dia: this.d4_folga}
+      var url = k + "/domingos/" + i;
+      return this.$firebaseRefs.banco.child(url).update(obj);
+    },
   },
   computed: {
     id() {
