@@ -23,7 +23,7 @@ moment.locale('pt-br')
 		},
 		W: function()
 		{
-			return Number(moment(this.display,"DD/MM/YYYY").format('w'))
+			return Number(moment(this.display,"DD/MM/YYYY").format('W'))
 		}
 	}
 }

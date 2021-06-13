@@ -1,57 +1,64 @@
 <template>
-<div class="home">
-  <div class="columns">
-    <div class="column">
-      <div class="card">
-        <header class="card-header">
-          <div class="card-header-title">
-            <p>Novo Colaborador</p>
+  <div class="home">
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <header class="card-header">
+            <div class="card-header-title">
+              <p>Novo Colaborador</p>
+            </div>
+          </header>
+          <div class="card-content">
+            <section>
+              <div class="field">
+                <div class="control">
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="Matricula"
+                    v-model="mat"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input
+                    type="text"
+                    class="input"
+                    placeholder="Nome do Colaborador"
+                    v-model="nome"
+                  />
+                </div>
+              </div>
+            </section>
           </div>
-        </header>
-        <div class="card-content">
-          <section>
-            <div class="field">
-              <div class="control">
-                <input
-                  type="text"
-                  class="input"
-                  placeholder="Matricula"
-                  v-model="mat"
-                />
-              </div>
+          <footer class="card-footer">
+            <div class="buttons card-footer-item">
+              <button class="button is-success" @click="addColab()">
+                Salvar
+              </button>
+              <button class="button is-danger">
+                Limpar
+              </button>
             </div>
-            <div class="field">
-              <div class="control">
-                <input
-                  type="text"
-                  class="input"
-                  placeholder="Nome do Colaborador"
-                  v-model="nome"
-                />
-              </div>
-            </div>
-          </section>
+          </footer>
         </div>
-        <footer class="card-footer">
-          <div class="buttons card-footer-item">
-            <button class="button is-success" @click="addColab()">
-              Salvar
-            </button>
-            <button class="button is-danger">Limpar</button>
-          </div>
-        </footer>
+      </div>
+      <div class="column">
+        <li v-for="c in banco">
+          <ul>
+            {{
+              c.mat
+            }}
+            ||
+            {{
+              c.nome
+            }}
+          </ul>
+        </li>
       </div>
     </div>
-    <div class="column">
-      <li v-for="c in banco">
-        <ul>
-          {{c.mat}} || {{c.nome}}
-        </ul>
-      </li>
-    </div>
   </div>
-</div>
-
 </template>
 
 <script>
@@ -70,17 +77,8 @@ export default {
       //id: this.$route.query.setor
     };
   },
-  // mounted() {
-  //   /*
-  //   função usada para carregar o organico inicia, caso o mÊs esteja Vazio,
-  //   */
-  //   if (Boolean(this.$route.query.setor) == false) {
-  //     return (this.id = "cpd");
-  //   } else {
-  //     this.id = this.$route.query.setor;
-  //   }
-  // },
   computed: {
+
     id() {
         return this.$route.params.setor + '/organico'
      /* if (this.setor == null) {
@@ -90,8 +88,8 @@ export default {
    week:function(){
         var weeks = []
               var i = weeks.length
-            while (i < 52){
-                  weeks.push({ dia: moment().startOf('year').add(i++,"weeks").format('L'), hora: moment().get("second") })
+            while (i < 54){
+                  weeks.push({ dia: moment(this.$parent.validateDate).add(i++,"weeks").format('YYYY-MM-DD'), hora: moment().get("second") })
               }
               return weeks
     }

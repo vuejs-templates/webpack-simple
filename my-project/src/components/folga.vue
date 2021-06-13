@@ -1,33 +1,44 @@
 <!--folga.vue-->
 <template>
-  <div class="flatpickr">
-<div class="field has-addons">
-  <p class="control">
+  <div>
      <input
-      type="text"
-      v-bind:value="value"
-      :placeholder="getValue"
+      type="date"
+      :min="min"
+      :max="max"
+      :value="value"
       class="input is-size-7"
       @input="$emit('input', $event.target.value)"
-      data-input
     />
-  </p>
-  <p class="control">
-    <button class="button is-small" data-clear>
-        [X]
-    </button>
-  </p>
-</div>
   </div>
 </template>
 <script>
 import moment from 'moment'
-import flatpickr from "flatpickr";
-import { Portuguese } from "flatpickr/dist/l10n/pt.js";
+// import flatpickr from "flatpickr";
+// import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 export default {
   name: "folga",
   props: ["value", "getValue"],
-  mounted() {
+  data(){
+   return {
+     nome: this.getValue,
+     min:"",
+     max:""
+     }
+  },
+  created() {
+    if (this.getValue !== 0){
+      this.min = moment(this.getValue,'YYYY-MM-DD').subtract(1,'days').format('YYYY-MM-DD')
+      this.max = moment(this.getValue,'YYYY-MM-DD').add(3,'days').format('YYYY-MM-DD')
+      }
+  },
+    updated(){
+    if (this.getValue !== 0){
+      this.min = moment(this.getValue,'YYYY-MM-DD').subtract(1,'days').format('YYYY-MM-DD')
+      this.max = moment(this.getValue,'YYYY-MM-DD').add(3,'days').format('YYYY-MM-DD')
+      console.log("updated")
+    }
+  },
+  /*mounted() {
     flatpickr(document.getElementsByClassName("flatpickr"), {
          wrap: true,
       dateFormat: "D,d/m",
@@ -35,7 +46,7 @@ export default {
       locale: Portuguese
     });
   },
-  /*computed: {
+  computed: {
     maxDate: moment(this.getValue).format('L')
   },*/
 };

@@ -2,4 +2,7 @@
         .navbar {
           display: none;
         }
+        .print_cls {
+          display: none
+        }
       }

@@ -1,10 +1,9 @@
-<!--Home.vue-->
 <template>
   <div class="wrap">
   <div class="table-container">
     <table class="table is-bordered">
       <tr id="head-list" class="has-text-centered">
-        <td class="print_cls"></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -20,8 +19,8 @@
         <td v-if="condFivDom"></td>
       </tr>
       <tr id="head-list" class="has-text-centered">
-        <td class="print_cls">
-          <input type="checkbox" v-model="edit"/>
+        <td>
+          <input type="checkbox" v-model="edit" class="print_cls"/>
         </td>
         <td class="mat-ret">Matricula</td>
         <td>Colaborador</td>
@@ -38,7 +37,7 @@
         <td v-if="condFivDom">folga</td>
       </tr>
       <tr v-for="colab in banco" :class="{ 'is-selected': colab.edit }">
-        <td class="p-0 print_cls">
+        <td class="p-0">
             <a
               class="button is-rounded is-success is-small"
               @click="editColab(colab.edit, colab['.key'])"
@@ -66,7 +65,7 @@
             v-if="colab.edit"
             :get-value="colab.domingos[$refs.d0.W].dia"
           ></folga><!--seletor de Array modificado-->
-          <span v-else>{{ colab.domingos[$refs.d0.W].dia | moment("ddd, DD/MM") }}</span>
+          <span v-else>{{ colab.domingos[$refs.d0.W].dia }}</span>
         </td>
         <td class="has-text-centered hora">
           <time-entrance
@@ -163,183 +162,3 @@
 </div>
   </div>
 </template>
-<script>
-import { db } from "../db";
-import moment from "moment";
-import "moment/locale/pt-br";
-moment.locale("pt-br");
-import { Portuguese } from "flatpickr/dist/l10n/pt.js";
-import folga from "../components/folga.vue";
-import domingo from "../components/domingo.vue";
-import timeEntrance from "../components/timeEntrance.vue";
-const setores = db.ref("setores");
-export default {
-  name: "Mensal",
-  //  props: ["id", "getDate", "setor"],
-  data: function() {
-    return {
-      banco: [],
-      nome: "",
-      mat: "",
-      edit: false,
-      idy: "",
-      updat: "",
-      d0_hora: "",
-      d0_folga: "",
-      d1_hora: "",
-      d1_folga: "",
-      d2_hora: "",
-      d2_folga: "",
-      d3_hora: "",
-      d3_folga: "",
-      d4_hora: "",
-      d4_folga: "",
-      config: {
-        dateFormat: "D,d/m",
-        locale: Portuguese
-      }
-    };
-  },
-  methods: {
-    remColab(idColab) {
-      this.$firebaseRefs.banco.child(idColab).remove();
-    },
-    editColab(idcol, coladKey) {
-      //var check = this.$rtdbBind('edit', setores.child(this.$props.id + idcol + '/edit'))
-      if (idcol == true) {
-        this.$firebaseRefs.banco.child(coladKey).update({ edit: false });
-      } else {
-        this.$firebaseRefs.banco.child(coladKey).update({ edit: true });
-      }
-      return console.log("Changed");
-    },
-    // funçoes de update hora
-    updateHora0(k, i) {
-      var obj = {hora: this.d0_hora}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateHora1(k, i) {
-      var obj = {hora: this.d1_hora}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateHora2(k, i) {
-      var obj = {hora: this.d2_hora}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateHora3(k, i) {
-      var obj = {hora: this.d3_hora}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateHora4(k, i) {
-      var obj = {hora: this.d4_hora}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateDia0(k, i) {
-      var obj = {dia: this.d0_folga}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateDia1(k, i) {
-      var obj = {dia: this.d1_folga}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateDia2(k, i) {
-      var obj = {dia: this.d2_folga}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateDia3(k, i) {
-      var obj = {dia: this.d3_folga}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-    updateDia4(k, i) {
-      var obj = {dia: this.d4_folga}
-      var url = k + "/domingos/" + i;
-      return this.$firebaseRefs.banco.child(url).update(obj);
-    },
-  },
-  computed: {
-    id() {
-        var url = this.$route.params.setor + '/organico'
-      return url.toLowerCase();
-    },
-   setor() {
-      return this.$route.params.setor;
-    },
-    condFivDom: function() {
-      return (
-        moment(this.validateDate)
-          .add(3, "w")
-          .month() ==
-        moment(this.validateDate)
-          .add(4, "w")
-          .month()
-      );
-    },
-    validateDate: function() {
-      var initDate = moment(this.$parent.monthpick, "MMMM YYYY")
-        .startOf("month")
-        .toDate();
-      if (moment(initDate).weekday() == 0) {
-        return moment(initDate).toObject();
-      } else {
-        return moment(initDate)
-          .startOf("week")
-          .add(1, "week")
-          .toObject();
-      }
-    }
-  },
-  components: {
-    folga,
-    domingo,
-    timeEntrance
-  },
-  watch: {
-    id: {
-      immediate: true,
-      handler(id) {
-        this.$rtdbBind("banco", setores.child(id));
-      }
-    }
-  }
-};
-</script>
-<style>
-.sign {
-  border-top-width: 2px;
-  border-top-color: black;
-  border-top: solid;
-  text-align: center;
-  margin-top: 50px;
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hora {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-.dia {
-  padding-left: 6px !important;
-  padding-right: 6px !important;
-  width: 70px;
-}
-.list > td {
-  padding: 5px !important;
-}
-#head-list > td {
-  text-align: center;
-}
-.mat-ret {
-  padding-left: 4px !important;
-  padding-right: 4px !important;
-}
-</style>
